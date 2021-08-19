@@ -126,7 +126,7 @@ const Contact = () => {
                   <Toast
                     type="error"
                     title="Error Sending Message"
-                    description="Something went wrong sending yout message."
+                    description="Something went wrong sending your message."
                     position="bottomleft"
                     duration={3000}
                   />
