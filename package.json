@@ -19,10 +19,5 @@
     "react-lite-toast": "^1.0.9",
     "react-scroll": "^1.8.2",
     "swiper": "^6.5.8"
-  },
-  "devDependencies": {
-    "@svgr/webpack": "^8.1.0",
-    "file-loader": "^6.2.0",
-    "url-loader": "^4.1.1"
   }
 }
