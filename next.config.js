@@ -1,11 +1,10 @@
-const withImages = require("next-images");
 const path = require("path");
 
-module.exports = withImages({
+module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
-  future: {
-    webpack5: true,
+  images: {
+    unoptimized: true,
   },
-});
+};

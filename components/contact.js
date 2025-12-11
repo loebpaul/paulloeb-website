@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import emailjs from "emailjs-com";
-import { Toast } from "react-lite-toast";
-import "react-lite-toast/dist/index.css";
+import dynamic from "next/dynamic";
+
+// Import Toast dynamically with SSR disabled to avoid SVG import issues
+const Toast = dynamic(() => import("react-lite-toast").then((mod) => mod.Toast), {
+  ssr: false,
+});
 
 const Contact = () => {
   const [toast, setToast, setToastType] = useState(false);
