@@ -27,6 +27,12 @@ npm run build
 
 The static export will be generated in the `out` directory.
 
+## Deploying
+
+After building, upload the contents of the `out` folder to SiteGround via the File Manager:
+
+https://tools.siteground.com/filemanager?siteId=TEEzMmEzME1KZz09
+
 ## Important Notes
 
 - **Node.js version**: Next.js 15 requires Node.js `^18.18.0 || ^19.8.0 || >= 20.0.0`. Use `nvm` to manage versions.
