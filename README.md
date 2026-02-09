@@ -14,5 +14,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ```
 npm install
 npx next build
-npx next export
 ```
+
+The static export will be generated in the `out` directory.
