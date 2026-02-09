@@ -6,7 +6,7 @@ const AboutMe = ({ image, comment }) => {
       <div className="about-bar">
         <h5 className="tit">About Me</h5>
         <br />
-        <img src={image} alt="Paul Loeb" />
+        <img src={image.src || image} alt="Paul Loeb" />
         <p>{comment}</p>
       </div>
     </div>

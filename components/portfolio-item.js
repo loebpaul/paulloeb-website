@@ -5,7 +5,7 @@ const PortfolioItem = ({ title, category, blog, image, imageAlt }) => {
     <div className="col-md-12 mb-30">
       <div className="post">
         <div className="img-post mb-20">
-          <img src={image} alt={imageAlt} />
+          <img src={image.src || image} alt={imageAlt} />
         </div>
         <div className="post-content">
           <div className="post-title text-center">
@@ -30,7 +30,7 @@ const PortfolioItem = ({ title, category, blog, image, imageAlt }) => {
               ) : (
                 ""
               )}
-              {item.image ? <img src={item.image} alt={item.imageAlt} /> : ""}
+              {item.image ? <img src={item.image.src || item.image} alt={item.imageAlt} /> : ""}
             </p>
           ))}
         </div>

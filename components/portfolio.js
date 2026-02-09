@@ -53,7 +53,7 @@ const Portfolio = () => {
             <div className="col-md-4" key={idx}>
               <div className="post">
                 <div className="img-post">
-                  <img src={item.image} alt={item.title} />
+                  <img src={item.image.src || item.image} alt={item.title} />
                   <div className="img-overlay">
                     <Link href={item.url}>
                       <span className="icon-attachment"></span>
