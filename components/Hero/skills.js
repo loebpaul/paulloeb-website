@@ -102,6 +102,8 @@ const Skills = () => {
 
               <div className="item-info mb-50">
                 <h6>Product Manager</h6>
+                <p>LaunchDarkly</p>
+                <p>GitHub</p>
                 <p>Flowspace</p>
                 <p>Ticketmaster / Live Nation</p>
                 <p>Thrive Market</p>
