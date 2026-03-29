@@ -702,6 +702,11 @@ a:focus {
   background: transparent;
 }
 
+/* Hide broken icon image in react-lite-toast */
+.toast-wrapper img {
+  display: none;
+}
+
 /* -------------------------------------------------------
                     Footer
 -------------------------------------------------------- */

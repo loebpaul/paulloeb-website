@@ -118,22 +118,26 @@ const Contact = () => {
                   />
                 </div>
                 {toast && window.toastOutcome == "success" && (
-                  <Toast
-                    type="success"
-                    title="Message Sent"
-                    description="Thank you, your message was sent successfully."
-                    position="bottomleft"
-                    duration={3000}
-                  />
+                  <div className="toast-wrapper">
+                    <Toast
+                      type="success"
+                      title="✅ Message Sent"
+                      description="Thank you, your message was sent successfully."
+                      position="bottomleft"
+                      duration={3000}
+                    />
+                  </div>
                 )}
                 {toast && window.toastOutcome == "error" && (
-                  <Toast
-                    type="error"
-                    title="Error Sending Message"
-                    description="Something went wrong sending your message."
-                    position="bottomleft"
-                    duration={3000}
-                  />
+                  <div className="toast-wrapper">
+                    <Toast
+                      type="error"
+                      title="❌ Error Sending Message"
+                      description="Something went wrong sending your message."
+                      position="bottomleft"
+                      duration={3000}
+                    />
+                  </div>
                 )}
                 <div className="clear-fix"></div>
               </div>
