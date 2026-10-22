@@ -10,7 +10,7 @@ This is the personal website for [Paul Loeb](http://paulloeb.net)
 ## Running In Development
 
 ```
-nvm use 20
+nvm use 22
 npm install
 npm run dev
 ```
@@ -20,7 +20,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Building For Production
 
 ```
-nvm use 20
+nvm use 22
 npm install
 npm run build
 ```

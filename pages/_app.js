@@ -1,5 +1,6 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "swiper/swiper-bundle.min.css";
+import "../assets/vendor/bootstrap-3.4.1/css/bootstrap.min.css";
+import "swiper/css";
+import "swiper/css/pagination";
 import "../assets/css/font-awesome.min.css";
 import "../assets/css/et-line.css";
 import "../assets/css/responsive.css";

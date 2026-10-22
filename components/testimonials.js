@@ -1,14 +1,13 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Autoplay, Pagination, EffectFade } from "swiper";
-
-SwiperCore.use([Autoplay, Pagination]);
+import { Autoplay, Pagination } from "swiper/modules";
 
 const Testimonials = () => {
   const mainSlideOptions = {
     slidesPerView: 1,
     loop: true,
-    effect: "fade",
+    // Preserve the legacy slide transition; its fade module was never enabled.
+    effect: "slide",
     pagination: {
       el: "#main-slider-pagination",
       type: "bullets",
@@ -25,7 +24,7 @@ const Testimonials = () => {
         <div className="row">
           <div className="col-md-12">
             <div className="client-say text-center">
-              <Swiper {...mainSlideOptions}>
+              <Swiper className="swiper-container swiper-container-horizontal" modules={[Autoplay, Pagination]} {...mainSlideOptions}>
                 <SwiperSlide>
                   <div className="client-item text-center">
                     <span className="icon-quote mb-50"></span>
