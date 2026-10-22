@@ -1,0 +1,110 @@
+{
+  "owner": "security-remediation-20261021",
+  "purpose": "Actual baseline/final testimonial component, application CSS and original Swiper options; synthetic text only; desktop1280x800 and phone375x812",
+  "accepted": [
+    {
+      "file": "before-phone-final.png",
+      "active": "COMPONENT PREVIEWExample testimonial 1. A sample reviewer describes clear communication and dependable results on desktop and phone screens.Example reviewer 1",
+      "bullets": 3,
+      "height": 812,
+      "scrollWidth": 375,
+      "scrollY": 0,
+      "width": 375
+    },
+    {
+      "file": "before-desktop-final.png",
+      "active": "COMPONENT PREVIEWExample testimonial 1. A sample reviewer describes clear communication and dependable results on desktop and phone screens.Example reviewer 1",
+      "bullets": 3,
+      "height": 800,
+      "scrollWidth": 1280,
+      "scrollY": 0,
+      "width": 1280
+    },
+    {
+      "file": "after-desktop-compatible.png",
+      "active": "COMPONENT PREVIEWExample testimonial 1. A sample reviewer describes clear communication and dependable results on desktop and phone screens.Example reviewer 1",
+      "bullets": [
+        {
+          "background": "rgb(196, 155, 102)",
+          "height": "4px",
+          "width": "20px"
+        },
+        {
+          "background": "rgb(214, 214, 214)",
+          "height": "4px",
+          "width": "20px"
+        },
+        {
+          "background": "rgb(214, 214, 214)",
+          "height": "4px",
+          "width": "20px"
+        }
+      ],
+      "height": 800,
+      "scrollWidth": 1280,
+      "scrollY": 0,
+      "width": 1280
+    },
+    {
+      "file": "after-phone-compatible.png",
+      "active": "COMPONENT PREVIEWExample testimonial 1. A sample reviewer describes clear communication and dependable results on desktop and phone screens.Example reviewer 1",
+      "bullets": 3,
+      "height": 812,
+      "scrollWidth": 375,
+      "scrollY": 0,
+      "width": 375
+    }
+  ],
+  "updatedPagination": {
+    "active": "COMPONENT PREVIEWExample testimonial 2. A sample reviewer describes clear communication and dependable results on desktop and phone screens.Example reviewer 2",
+    "visibleParagraphs": [
+      "Example testimonial 2. A sample reviewer describes clear communication and dependable results on desktop and phone screens."
+    ]
+  },
+  "autoplay": {
+    "before": {
+      "active": "COMPONENT PREVIEWExample testimonial 1. A sample reviewer describes clear communication and dependable results on desktop and phone screens.Example reviewer 1",
+      "time": 1792705701792
+    },
+    "after": {
+      "active": "COMPONENT PREVIEWExample testimonial 3. A sample reviewer describes clear communication and dependable results on desktop and phone screens.Example reviewer 3",
+      "time": 1792705723867,
+      "visibleParagraphs": [
+        "Example testimonial 3. A sample reviewer describes clear communication and dependable results on desktop and phone screens."
+      ]
+    }
+  },
+  "committed_files": [
+    {
+      "source_capture": "before-desktop-final.png",
+      "file": "before-desktop.png",
+      "sha256": "01693327c2525cae3aed12a8627c4282e4d43aa81a7bedf6c52cf502ddd10a3a"
+    },
+    {
+      "source_capture": "after-desktop-compatible.png",
+      "file": "after-desktop.png",
+      "sha256": "3fc5f00db4d3d96a4f08e7bb129176a494d34578a4bdf5a9f2d869568dd3d76a"
+    },
+    {
+      "source_capture": "before-phone-final.png",
+      "file": "before-phone.png",
+      "sha256": "1fef6342e230f5882973843b8253494a0dedb179d2bf91896e71d0168ab2e1eb"
+    },
+    {
+      "source_capture": "after-phone-compatible.png",
+      "file": "after-phone.png",
+      "sha256": "0c3dbfab550d73e76dff57ec8a3643365698b85bbd1f85e2b13613dc88ac7f78"
+    }
+  ],
+  "base_commit": "678b747e4d716b4d38bf0af1028ed137944623ed",
+  "runtime": "Node22.23.4/Linux",
+  "capture_mode": "Actual isolated testimonial component with application CSS and original autoplay/pagination props; only text children replaced with synthetic fixture text",
+  "production_source_sha256": {
+    "test/static-assets.test.cjs": "1372d1ae9891047e65aa3dfc4577afd434bf901d68d319bb38e6650171ccc26e",
+    "components/testimonials.js": "f47957ff988fc8d60574a496625c783d0d7c29a8178f37a55f35632b3d1e0e3d",
+    "next.config.js": "5b7433685939c83818595a039289c560f14ca9718e51ac368ef207e9fba050ce",
+    "package-lock.json": "1c3cdb2a5a6a2c0f89e169b46a087ac2a362eae354f163333731891ac023c776",
+    "package.json": "59916f211f6dc0d617e328e4c31a427fe1ce67210a1f0bec42ab3d5b524b7a10",
+    "pages/_app.js": "7e2f9de4434feb9c8451d8546776eb4f800274430d05fb4ca5f4edc3644c8b1a"
+  }
+}

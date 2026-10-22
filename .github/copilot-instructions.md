@@ -8,7 +8,7 @@ This is a personal portfolio website built with **Next.js 15** using the **Pages
 
 ### Node.js Version
 - Next.js 15 requires Node.js `^18.18.0 || ^19.8.0 || >= 20.0.0`.
-- Use `nvm use 20` before running any commands.
+- Use Node.js 22 (for example, `nvm use 22`) before running commands; CI and image tooling use this supported runtime.
 
 ### Static Export
 - The site uses `output: "export"` in `next.config.js` to generate a fully static site.
@@ -23,4 +23,4 @@ This is a personal portfolio website built with **Next.js 15** using the **Pages
 
 ### Dependencies
 - `sharp` is required for image processing during build. It must remain in `package.json` dependencies.
-- The project uses Bootstrap 3 and React Bootstrap 0.33 (legacy versions).
+- The project uses unchanged vendored Bootstrap 3 CSS/fonts and React Bootstrap 0.33. Bootstrap JavaScript is deliberately absent. Swiper 12 imports modules from `swiper/modules` and styles from `swiper/css`.

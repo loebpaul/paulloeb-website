@@ -1,0 +1,23 @@
+import React from "react";
+import Testimonials from "../components/testimonials";
+export default function SecurityPreview() {
+  let paragraph = 0;
+  let reviewer = 0;
+  const redact = (node) => {
+    if (!React.isValidElement(node)) return node;
+    let children;
+    if (node.type === "p") {
+      paragraph += 1;
+      children = "Example testimonial " + paragraph + ". A sample reviewer describes clear communication and dependable results on desktop and phone screens.";
+    } else if (node.type === "h6") {
+      reviewer += 1;
+      children = "Example reviewer " + reviewer;
+    } else if (node.type === "h5") {
+      children = "COMPONENT PREVIEW";
+    } else {
+      children = React.Children.map(node.props.children, redact);
+    }
+    return React.cloneElement(node, undefined, children);
+  };
+  return <main style={{ minHeight: "100vh", paddingTop: 48 }}>{redact(Testimonials())}</main>;
+}
