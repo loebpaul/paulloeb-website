@@ -34,7 +34,7 @@ test('the studio export preserves the three static portfolio pages', () => {
     ['pitch-deck-uploader', 'Pitch Deck Uploader']
   ]) {
     const page = fs.readFileSync(path.join(root, 'out/portfolio', slug + '.html'), 'utf8');
-    assert.ok(page.includes('<title>' + title + ' | Paul Loeb</title>'));
+    assert.equal(page.match(/<title\b[^>]*>([^<]*)<\/title>/)?.[1], title + ' | Paul Loeb');
     assert.match(page, /href="\/">Home \/<\/a>/);
   }
   assert.ok(fs.existsSync(path.join(root, 'out/_next/static')));
