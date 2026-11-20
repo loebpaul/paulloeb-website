@@ -100,7 +100,7 @@ function mountTurntable(layer,note,{action}={}) {
   bar.type='range';bar.min='0';bar.max='276';bar.value='0';bar.step='.1';
   bar.setAttribute('aria-label','Seek through Dreams');
   const clock=el('time','0:00');
-  const track=a('',urls.dreams,'track-name');
+  const track=trackedLink(a('',urls.dreams,'track-name'),'studio_music_link','Velvet Circuits');
   track.append(el('strong','Dreams'),el('span','Velvet Circuits'));
   const collection=el('button','Record shelf','collection-link');
   collection.type='button';
@@ -166,10 +166,13 @@ function mountTurntable(layer,note,{action}={}) {
     if(frameId===null)frameId=requestAnimationFrame(tick);
     show();
   }
-  async function play(){
+  async function play(trackStart=true){
     if(deck.source)return;
     const intent=++playIntent;
-    if(await readyToPlay()&&intent===playIntent&&!dragging?.moving&&!armDrag)resume();
+    if(await readyToPlay()&&intent===playIntent&&!dragging?.moving&&!armDrag){
+      resume();
+      if(trackStart&&deck.source)trackStudioEvent('studio_dreams_play');
+    }
   }
   function pause(){
     playIntent++;
@@ -217,6 +220,7 @@ function mountTurntable(layer,note,{action}={}) {
     if(!dragging.moving){
       if(Math.hypot(event.clientX-dragging.x,event.clientY-dragging.y)<5)return;
       dragging.moving=true;
+      trackStudioEvent('studio_dreams_scratch');
       dragging.resume=Boolean(deck.source);
       playIntent++;
       stopRecord();
@@ -238,9 +242,10 @@ function mountTurntable(layer,note,{action}={}) {
   function releasePlatter(event){
     if(!dragging||dragging.id!==event.pointerId)return;
     const restart=dragging.resume||(!dragging.moving&&event.type==='pointerup');
+    const trackStart=!dragging.moving;
     dragging=null;
     show();
-    if(restart)play();
+    if(restart)play(trackStart);
   }
   for(const type of ['pointerup','pointercancel','lostpointercapture']){
     platter.addEventListener(type,releasePlatter);
@@ -291,7 +296,10 @@ function mountTurntable(layer,note,{action}={}) {
     stopRecord();
     const direction=event.key==='ArrowLeft'?-1:1;
     deck.position=Math.max(0,Math.min(deck.buffer?.duration??276,deck.position+direction*.22));
-    if(await readyToPlay())scrubGrain(deck.position,direction,1);
+    if(await readyToPlay()){
+      scrubGrain(deck.position,direction,1);
+      if(!event.repeat)trackStudioEvent('studio_dreams_scratch');
+    }
     if(wasPlaying&&awake)resume();else show();
   });
   show();

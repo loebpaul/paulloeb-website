@@ -15,6 +15,13 @@ function el(tag,text='',className='') {
 function a(label,link,style='') {
   const node=el('a',label,style);node.href=link;node.target='_blank';node.rel='noopener noreferrer';return node;
 }
+function trackedLink(node,event,item) {
+  node.addEventListener('click',()=>trackStudioEvent(event,item));
+  node.addEventListener('auxclick',click=>{
+    if(click.button===1)trackStudioEvent(event,item);
+  });
+  return node;
+}
 function photo(file,alt='',style='') {
   const image=el('img','',style);
   image.src='assets/'+file;image.alt=alt;
@@ -41,7 +48,10 @@ function beatsProducts() {
   const buttons=figures.map(([name],index)=>{
     const button=el('button',name);
     button.type='button';
-    button.addEventListener('click',()=>select(index));
+    button.addEventListener('click',()=>{
+      select(index);
+      trackStudioEvent('studio_beats_product_select',name);
+    });
     menu.append(button);
     return button;
   });
@@ -76,7 +86,10 @@ function showCareer() {
     const names=el('span','','career-label');
     names.append(el('strong',role.name),el('small',role.when));
     b.append(mark(role),names);
-    b.addEventListener('click',()=>selectCareer(index,buttons,detail));
+    b.addEventListener('click',()=>{
+      selectCareer(index,buttons,detail);
+      trackStudioEvent('studio_career_select',role.name);
+    });
     rack.append(b);
     return b;
   });
@@ -87,7 +100,7 @@ function showCareer() {
 function musicTile(img,alt,name,note,href,act) {
   const item=el('article','','music-tile');
   const words=el('div');
-  words.append(el('h3',name),el('p',note),a(act+' ↗',href,'text-link'));
+  words.append(el('h3',name),el('p',note),trackedLink(a(act+' ↗',href,'text-link'),'studio_music_link',name));
   item.append(photo(img,alt),words);
   return item;
 }
@@ -104,12 +117,12 @@ function showCollection() {
   const heading=el('div','','duet-heading');
   const duetTitle=el('h3','Duets with my dad');
   duetTitle.id='duets-heading';
-  heading.append(duetTitle,a('Full playlist ↗',urls.duets));
+  heading.append(duetTitle,trackedLink(a('Full playlist ↗',urls.duets),'studio_duet_link','Full playlist'));
   const grid=el('div','','media-grid');
   for(const [song,artist,id,img] of duets){
     const card=a('',`https://www.youtube.com/watch?v=${id}&list=PLVP9gqGdj2ds`,'media-card');
     card.append(photo(img,''),el('strong',song),el('span',artist+' cover ↗'));
-    grid.append(card);
+    grid.append(trackedLink(card,'studio_duet_link',song));
   }
   duetSection.append(heading,grid);
   body.append(...releases,duetSection);
@@ -120,7 +133,7 @@ function showInterviews() {
   for(const item of interviews){
     const card=a('',item.link,'media-card');
     card.append(photo(item.photo,''),el('strong',item.name),el('span',item.title+' ↗'));
-    grid.append(card);
+    grid.append(trackedLink(card,'studio_interview_link',item.name));
   }
   body.append(grid);
 }
@@ -128,7 +141,7 @@ function showBoris() {
   body.append(
     title('Studio cat','Boris','My cat is big in Japan.'),
     photo('boris.webp','Paul holding Boris','boris-photo'),
-    a('@russian_boris on Instagram ↗',urls.boris,'text-link')
+    trackedLink(a('@russian_boris on Instagram ↗',urls.boris,'text-link'),'studio_boris_link')
   );
 }
 
@@ -142,6 +155,7 @@ function eclipseViewer() {
   const field=el('input');field.type='range';field.min='-55';field.max='55';field.value='-16';
   field.setAttribute('aria-label','Move the moon across the sun');
   field.addEventListener('input',()=>scene.style.setProperty('--offset',field.value+'px'));
+  field.addEventListener('change',()=>trackStudioEvent('studio_eclipse_adjust'));
   const label=el('label','Move the moon across the sun');
   label.append(field);section.append(label);
   const list=el('ol','','eclipse-trips');
@@ -172,6 +186,7 @@ function showTravel() {
       map.dataset.place=name;
       status.textContent=name;
       drawTrip(canvas,name,true);
+      trackStudioEvent('studio_destination_select',name);
     });
     list.append(b);
     return b;
@@ -190,6 +205,16 @@ function showTravel() {
 
 const panels={desk:showCareer,collection:showCollection,interviews:showInterviews,travel:showTravel,boris:showBoris};
 const stations={rack:mountPatchBay,music:mountTurntable,keys:mountKeyboard};
+const studioOpenEvents={
+  desk:'studio_career_open',
+  rack:'studio_patch_bay_open',
+  music:'studio_turntables_open',
+  collection:'studio_record_shelf_open',
+  keys:'studio_piano_open',
+  interviews:'studio_interviews_open',
+  travel:'studio_travel_open',
+  boris:'studio_boris_open'
+};
 const liveGear=document.querySelector('.live-gear');
 const gearNote=document.querySelector('.gear-note');
 const returnToStudio=document.querySelector('.studio-return');
@@ -213,6 +238,7 @@ function openPanel(key,trigger) {
   closeButton.focus({preventScroll:true});
   tray.scrollTop=0;
   setFocus(key);
+  trackStudioEvent(studioOpenEvents[key]);
 }
 function closePanel(restoreFocus=true,resetCamera=true) {
   if(tray.hidden)return;
@@ -239,6 +265,7 @@ function openStation(key,trigger,detail) {
   setFocus(key);
   releaseStation=stations[key](liveGear,gearNote,detail);
   returnToStudio.focus({preventScroll:true});
+  trackStudioEvent(studioOpenEvents[key]);
 }
 function closeStation(restoreFocus=true,resetCamera=true) {
   if(!currentStation)return;

@@ -111,6 +111,8 @@ function startPianoVoice(audio,note,destination,voices) {
 function mountKeyboard(layer,note,{note:openingNote}={}) {
   let mounted=true;
   let inputEpoch=0;
+  let playedPiano=false;
+  let playedChord=false;
   const listeners=new AbortController();
   const inputs=new Map();
   const heldNotes=new Map();
@@ -213,6 +215,14 @@ function mountKeyboard(layer,note,{note:openingNote}={}) {
     if(existing){existing.count++;return;}
     const entry={count:1,voice:null};
     heldNotes.set(midi,entry);
+    if(!playedPiano){
+      playedPiano=true;
+      trackStudioEvent('studio_piano_play');
+    }
+    if(!playedChord&&heldNotes.size>=2){
+      playedChord=true;
+      trackStudioEvent('studio_piano_chord');
+    }
     pianoLighting.sounding.add(midi);
     updateNotes();
     prepareVoice(midi,entry,inputEpoch);

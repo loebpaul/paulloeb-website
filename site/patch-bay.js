@@ -69,6 +69,7 @@ function mountPatchBay(layer,note) {
   }
 
   function route(index,key){
+    const changed=key && leads[index].route!==key;
     if(key){
       const occupant=leads.findIndex(row=>row.route===key);
       if(occupant>=0&&occupant!==index)leads[occupant].route=null;
@@ -78,6 +79,7 @@ function mountPatchBay(layer,note) {
     held=null;
     moveCable(null);
     update();
+    if(changed)trackStudioEvent('studio_patch_connect',key);
   }
   function pickUp(index){
     leads[index].route=null;
