@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node scripts/export-studio-home.cjs",
     "start": "next start",
     "test": "node --test test/*.test.cjs"
   },

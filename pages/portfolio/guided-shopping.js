@@ -22,7 +22,7 @@ function GuidedShopping() {
           <div className="caption v-middle text-center">
             <h1>Guided Shopping</h1>
             <span>
-              <Link href="/">Home /</Link>
+              <a href="/">Home /</a>
             </span>
             <span>
               <Link href="#0"> Portfolio</Link>

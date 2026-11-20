@@ -15,7 +15,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000/studio/index.html](http://localhost:3000/studio/index.html) to work on the studio homepage in `public/studio`. The Next.js pages under `pages/portfolio` retain their own routes.
 
 ## Building For Production
 
@@ -25,11 +25,13 @@ npm install
 npm run build
 ```
 
-The static export will be generated in the `out` directory.
+The static export is written to `out`. The postbuild script places the studio at the root while the portfolio pages and their assets remain in the export.
 
 ## Deploying
 
-After building, upload the contents of the `out` folder to SiteGround via the File Manager:
+Run the [Deploy to SiteGround workflow](https://github.com/loebpaul/paulloeb-website/actions/workflows/deploy.yml) from the revision you intend to publish. The workflow runs the same static export and uploads `out` to SiteGround. Cloudflare proxies the public domain.
+
+The SiteGround File Manager is available for manual recovery:
 
 https://tools.siteground.com/filemanager?siteId=TEEzMmEzME1KZz09
 

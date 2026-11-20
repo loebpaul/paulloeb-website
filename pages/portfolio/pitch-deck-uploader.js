@@ -21,7 +21,7 @@ function PitchDeckUploader() {
           <div className="caption v-middle text-center">
             <h1>Pitch Deck Uploader</h1>
             <span>
-              <Link href="/">Home /</Link>
+              <a href="/">Home /</a>
             </span>
             <span>
               <Link href="#0"> Portfolio</Link>

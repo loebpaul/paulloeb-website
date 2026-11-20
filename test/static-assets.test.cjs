@@ -16,11 +16,26 @@ test('vendored Bootstrap keeps the exact official CSS/fonts and excludes vulnera
   assert.equal(lock.packages['node_modules/bootstrap'], undefined);
 });
 
-test('Next exports a real homepage with the maintained testimonial component', () => {
+test('the published homepage loads the studio from the static export', () => {
   const html = fs.readFileSync(path.join(root, 'out/index.html'), 'utf8');
-  assert.match(html, /<html/);
-  assert.match(html, /id="testimonials"/);
-  assert.match(html, /swiper-container-horizontal/);
-  assert.match(html, /main-slider-pagination/);
+  assert.match(html, /id="studio"/);
+  assert.match(html, /<base href="\/studio\/">/);
+  assert.match(html, /Explore Paul’s recording studio/);
+  for (const [, file] of html.matchAll(/(?:src|href)="([^":/#][^":]*)"/g)) {
+    assert.ok(fs.existsSync(path.join(root, 'out/studio', file)), file);
+  }
+  assert.ok(fs.existsSync(path.join(root, 'out/studio/assets/dreams-audio.js')));
+});
+
+test('the studio export preserves the three static portfolio pages', () => {
+  for (const [slug, title] of [
+    ['guided-shopping', 'Guided Shopping'],
+    ['on-demand', 'On-Demand'],
+    ['pitch-deck-uploader', 'Pitch Deck Uploader']
+  ]) {
+    const page = fs.readFileSync(path.join(root, 'out/portfolio', slug + '.html'), 'utf8');
+    assert.ok(page.includes('<title>' + title + ' | Paul Loeb</title>'));
+    assert.match(page, /href="\/">Home \/<\/a>/);
+  }
   assert.ok(fs.existsSync(path.join(root, 'out/_next/static')));
 });
