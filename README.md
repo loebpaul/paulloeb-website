@@ -1,41 +1,15 @@
-This is the personal website for [Paul Loeb](http://paulloeb.net)
+# Paul Loeb’s recording studio
 
-## Tech Stack
+The files in `site/` serve [paulloeb.net](https://paulloeb.net/) directly.
 
-- **Next.js 15** (Pages Router) with static export (`output: "export"` in `next.config.js`)
-- **React 18**
-- **Bootstrap 3** / React Bootstrap
-- **Node.js >= 18.18.0** (required by Next.js 15)
+## Preview and verify
 
-## Running In Development
+Run `python3 -m http.server 8000 --directory site` and open [the local preview](http://localhost:8000/). With Node.js 22, run `node --test` to verify the release files and Analytics configuration. There are no packages to install or files to build.
 
-```
-nvm use 22
-npm install
-npm run dev
-```
+## Deploy
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Run the [Deploy to SiteGround workflow](https://github.com/loebpaul/paulloeb-website/actions/workflows/deploy.yml) from the revision to publish. The workflow verifies and syncs `site/` to the SiteGround origin. Cloudflare proxies the public domain.
 
-## Building For Production
+## Analytics
 
-```
-nvm use 22
-npm install
-npm run build
-```
-
-The static export will be generated in the `out` directory.
-
-## Deploying
-
-After building, upload the contents of the `out` folder to SiteGround via the File Manager:
-
-https://tools.siteground.com/filemanager?siteId=TEEzMmEzME1KZz09
-
-## Important Notes
-
-- **Node.js version**: Next.js 15 requires Node.js `^18.18.0 || ^19.8.0 || >= 20.0.0`. Use `nvm` to manage versions.
-- **Static export**: `next export` was removed in Next.js 15. Static export is configured via `output: "export"` in `next.config.js` and runs automatically during `next build`.
-- **Images**: Next.js image imports (e.g. `import img from "./photo.jpg"`) return an object, not a string. Use `img.src` when passing to a plain `<img>` tag. Image optimization is disabled (`images.unoptimized: true`) for static export compatibility.
-- **sharp**: The `sharp` package is required for image processing during build. It is listed as a dependency.
+Google Analytics collects pageviews and `studio_*` events on the public site. The Events report shows which studio areas visitors open and which interactions they use. Events for selections and links include the public item label in `studio_item`. Local previews skip collection.

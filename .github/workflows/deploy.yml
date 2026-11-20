@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -18,11 +18,8 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps
-
-      - name: Build static site
-        run: npm run build
+      - name: Verify static site
+        run: node --test
 
       - name: Deploy to SiteGround via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
@@ -30,7 +27,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./out/
+          local-dir: ./site/
           server-dir: /paulloeb.net/public_html/
           exclude: |
             **/.git*

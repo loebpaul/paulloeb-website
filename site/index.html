@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Paul Loeb. AI at LaunchDarkly, founder of DropTrack, and music producer.">
+  <link rel="canonical" href="https://paulloeb.net/">
+  <title>Paul Loeb</title>
+  <link rel="stylesheet" href="studio.css">
+  <script src="analytics.js" defer></script>
+  <script src="content.js" defer></script>
+  <script src="assets/geography.js" defer></script>
+  <script src="atlas.js" defer></script>
+  <script src="room.js" defer></script>
+  <script src="patch-bay.js" defer></script>
+  <script src="turntable.js" defer></script>
+  <script src="keyboard.js" defer></script>
+  <script src="experience.js" defer></script>
+</head>
+<body>
+<header class="wrap">
+  <nav aria-label="Main">
+    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/loebpaul/">LinkedIn ↗</a>
+    <a target="_blank" rel="noopener noreferrer" href="https://x.com/paul8307">X ↗</a>
+  </nav>
+</header>
+<main id="top" class="wrap">
+  <div class="home">
+    <section class="intro" aria-labelledby="name">
+      <div class="hero-name"><img src="assets/paul.jpg" alt="Portrait of Paul Loeb" width="86" height="86"><h1 id="name">Paul Loeb</h1></div>
+      <p>I work on AI at <a target="_blank" rel="noopener noreferrer" href="https://launchdarkly.com/solutions/control-ai-agents/">LaunchDarkly</a>. I started DropTrack to help independent artists get heard.</p>
+      <div class="tour">
+        <button type="button" data-open="rack">Start at the patch bay <span aria-hidden="true">↗</span></button>
+        <p>Drag to look around. Click or scroll up on the gear to zoom in.</p>
+      </div>
+    </section>
+    <section class="studio" id="studio" aria-label="Explore Paul’s recording studio">
+      <div class="stage">
+        <canvas aria-hidden="true"></canvas>
+        <span class="gear-label" aria-hidden="true" hidden></span>
+        <div class="live-gear" hidden></div>
+        <button type="button" class="studio-return" hidden>← Back to the studio</button>
+        <div class="orbit" aria-label="Change view">
+          <button type="button" data-turn="-1" aria-label="Rotate left">↶</button>
+          <button type="button" data-reset aria-label="Reset view">⌂</button>
+          <button type="button" data-turn="1" aria-label="Rotate right">↷</button>
+        </div>
+      </div>
+      <div class="gear-note" hidden></div>
+      <nav class="room-guide" aria-label="Studio guide">
+        <button type="button" data-open="desk">Mixing desk</button>
+        <button type="button" data-open="rack">Patch bay</button>
+        <button type="button" data-open="music">Turntables</button>
+        <button type="button" data-open="collection">Record shelf</button>
+        <button type="button" data-open="keys">Keyboard</button>
+        <button type="button" data-open="interviews">Microphone</button>
+        <button type="button" data-open="travel">Travel wall</button>
+        <button type="button" data-open="boris">Boris</button>
+      </nav>
+      <noscript>Explore my work at <a target="_blank" rel="noopener noreferrer" href="https://launchdarkly.com/solutions/control-ai-agents/">LaunchDarkly</a>, listen to <a target="_blank" rel="noopener noreferrer" href="https://www.velvetcircuits.com/">Dreams</a>, or see <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/russian_boris/">Boris on Instagram</a>.</noscript>
+    </section>
+  </div>
+</main>
+<aside id="drawer" class="drawer" aria-label="Inside the studio" hidden>
+  <div class="drawer-bar"><button type="button" class="close">← Back to the studio</button></div>
+  <div class="drawer-content"></div>
+</aside>
+</body>
+</html>
